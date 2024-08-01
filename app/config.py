@@ -3,6 +3,8 @@ from pathlib import Path
 from dataclasses import dataclass
 import yaml
 
+EMBEDDING_MODEL = "klue/roberta-large"
+
 @dataclass
 class Paths:
     BASE_DIR: Path = Path(__file__).resolve().parent.parent
@@ -13,7 +15,7 @@ with open(Paths.SECRETS_PATH, "r", encoding="utf-8") as file:
 
 @dataclass(frozen=True)
 class ElasticsearchConfig:
-    INDEX_NAME = SECRETS["ELASTICSEARCH"]["PROD_INDEX_NAME"]
+    INDEX_NAME = "disaster"
     ES_CLOUD_ID = SECRETS["ELASTICSEARCH"]["CLOUD_ID"]
     ES_USER = SECRETS["ELASTICSEARCH"]["USER"]
     ES_PASSWORD = SECRETS["ELASTICSEARCH"]["PASSWORD"]
